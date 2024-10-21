@@ -13,7 +13,7 @@ function App() {
  const fetchData = async () => {
    try {
      const response = await axios.get(
-       `http://api.weatherapi.com/v1/forecast.json?key=278819deaeeb496b94f54313241710&q=${city}&days=7`
+       `https://api.weatherapi.com/v1/forecast.json?key=278819deaeeb496b94f54313241710&q=${city}&days=7`
      );
      setWeatherData(response.data);
     //  console.log(response.data); 
@@ -26,7 +26,7 @@ function App() {
  const getWeatherIcon =async()=>{
   try {
     const response = await axios.get(
-      "https://weathericonserver.onrender.com/weatherIcons"
+      "https://weathericonserver.onrender.com/weatherIcons/"
     );
     setWeatherIcon(response.data);
     // console.log(response.data); 
