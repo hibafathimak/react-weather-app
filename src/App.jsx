@@ -16,7 +16,7 @@ function App() {
        `https://api.weatherapi.com/v1/forecast.json?key=278819deaeeb496b94f54313241710&q=${city}&days=7`
      );
      setWeatherData(response.data);
-    //  console.log(response.data); 
+     console.log(response.data); 
    } catch (error) {
      console.error(error);
    }
@@ -44,9 +44,9 @@ function App() {
     setMainIcon(weatherIcon?.find(item=>(item.text=="Clear")).url)
    }
    else { if(weatherData?.current.is_day==1)
-    {setMainIcon(weatherIcon?.find(item=>(item.text==weatherData?.current.condition.text))?.day)}
+    {setMainIcon(weatherIcon?.find(item=>(item.text==weatherData?.current.condition.text.trimEnd()))?.day)}
     else{
-      setMainIcon(weatherIcon?.find(item=>(item.text==weatherData?.current.condition.text))?.night)
+      setMainIcon(weatherIcon?.find(item=>(item.text==weatherData?.current.condition.text.trimEnd()))?.night)
     }}
  }
 
@@ -97,12 +97,12 @@ function App() {
 </div>
 
 <div className='ps-5'>
-    <h1 style={{fontFamily:"monospace"}} className='fs-1 my-5'>Weather App</h1>
+    <h1 style={{fontFamily:"monospace"}} className='fs-1 my-5'>Weather Forecast</h1>
     <div className="d-flex w-100 justify-content-between">
      { 
      weatherData?.forecast.forecastday.map((item,index)=>(
       index!=0 && 
-        <div key={index}  className="bg-light m-3 d-flex flex-column  align-items-center p-3 shadow rounded">
+        <div key={index}  className=" effect bg-light m-3 d-flex flex-column  align-items-center p-3 shadow rounded">
         <h6>{item.date}</h6>
 {    
 
@@ -113,7 +113,7 @@ item?.day.condition.text=="Clear" ?
 <img width={'100px'} src={weatherIcon?.find(icon1=>(icon1.text=="Clear")).url} alt="" />
 :
 
-<img width={'100px'} src={weatherIcon?.find(icon2=>(icon2.text==item?.day.condition.text))?.day} alt="" />
+<img width={'100px'} src={weatherIcon?.find(icon2=>(icon2.text==item?.day.condition.text.trimEnd()))?.day} alt="" />
 }        
 
 <h6>{item.day.avgtemp_c}°</h6>
