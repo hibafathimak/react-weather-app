@@ -13,7 +13,7 @@ function App() {
  const fetchData = async () => {
    try {
      const response = await axios.get(
-       `https://api.weatherapi.com/v1/forecast.json?key=278819deaeeb496b94f54313241710&q=${city}&days=7`
+       `https://api.weatherapi.com/v1/forecast.json?key=ac3083e954f647baa4163737250201&q=${city}&days=7`
      );
      setWeatherData(response.data);
      console.log(response.data); 
@@ -98,7 +98,7 @@ function App() {
 
 <div className='ps-5'>
     <h1 style={{fontFamily:"monospace"}} className='fs-1 my-5'>Weather Forecast</h1>
-    <div className="d-flex w-100 justify-content-between">
+    <div className="d-flex w-100">
      { 
      weatherData?.forecast.forecastday.map((item,index)=>(
       index!=0 && 
